@@ -1,3 +1,28 @@
+Update style.css file
+---------------------
+Note: Add the following block of code to the top of the style.css file including
+the "/*" and "*/" characters at the start of end of the code block.
+
+/*
+Theme Name: Glenn's Theme
+Theme URI: http://www.glennhodgkinson.com/wp-theme
+Author: Glenn Hodgkinson
+Author URI: http://www.glennhodgkinson.com
+Description: This is a sample theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: Light, Responsive
+*/
+
+
+Create index.php file
+---------------------
+// line 1
+
+
+
+
 <!-- Insert at line 28 of the header.php file -->
 <?php wp_nav_menu( array( 'theme_location' => 'primarynav-menu' ) ); ?>
 
