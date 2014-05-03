@@ -1,0 +1,3 @@
+<!-- Insert at line 28 of the header.php file -->
+<?php wp_nav_menu( array( 'theme_location' => 'primarynav-menu' ) ); ?>
+
