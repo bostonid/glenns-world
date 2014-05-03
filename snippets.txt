@@ -1,6 +1,6 @@
 Update style.css file
 ---------------------
-Note: Add the following block of code to the top of the style.css file including
+NOTE: Add the following block of code to the top of the style.css file including
 the "/*" and "*/" characters at the start of end of the code block.
 
 /*
@@ -22,7 +22,151 @@ Create index.php file
 
 
 
+Create header.php file
+----------------------
+NOTE: Paste the code below into a new file and save it as header.php
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="author" content="Glenn Hodgkinson">
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" media="screen">
+  <?php wp_head(); ?>
+  <title><?php the_title(); ?> | Glenn Hodgkinson</title>
+</head>
+
+<body <?php body_class(); ?>>
+
+  <header id="page-header" class="cf">
+    <div class="inner-wrap pad20">
+      <a href="/"><img src="<?php bloginfo('template_directory'); ?>/images/logo-long.png" class="logo float-left"></a>
+
+      <div class="mobile-only align-right">
+        <span class="menu-trigger"></span>
+      </div>
+
+
+
+      <nav id="top-nav" class="mob-menu">
+        <?php wp_nav_menu( array( 'theme_location' => 'primarynav-menu' ) ); ?>
+      </nav>
+    </div> <!-- /.inner-wrap -->
+  </header> <!-- /#page-header -->
+
+
 
 <!-- Insert at line 28 of the header.php file -->
 <?php wp_nav_menu( array( 'theme_location' => 'primarynav-menu' ) ); ?>
+
+
+
+
+Register your menu
+------------------
+<?php
+// Register my primary navigation menu
+function register_my_menu() {
+  register_nav_menu('primarynav-menu',__( 'Primary Navigation Menu' ));
+}
+add_action( 'init', 'register_my_menu' );
+
+// Replaces the excerpt "more" text by a link
+function new_excerpt_more($more) {
+       global $post;
+  return '<a class="moretag" href="'. get_permalink($post->ID) . '">... [read more]</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+?>
+
+
+
+
+Create your blog landing page
+-----------------------------
+ <?php /*
+Template Name: Blog Landing Page
+*/ ?>
+<?php define('WP_USE_THEMES', true); get_header(); ?>
+
+  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+  <div class="content-wrapper">
+
+
+    <div class="inner-wrap darkbg shadow cf">
+
+      <div class="pad20">
+        <h1><?php the_title(); ?></h1>
+      </div>
+
+    </div>
+
+    <div class="inner-wrap whitebg shadow pad20">
+
+      <article class="article-wrap">
+
+          <?php the_content();?>
+
+      <?php endwhile; else: ?>
+      <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+      <?php endif; ?>
+
+      </article> <!-- /.article-wrap -->
+
+      <section>
+        <?php
+          $args = array( 'posts_per_page' => 10, 'order'=> 'DESC', 'orderby' => 'post_date' );
+          $postslist = get_posts( $args );
+          foreach ( $postslist as $post ) :
+            setup_postdata( $post ); ?>
+            <article class="article-excerpt">
+              <h2><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h2>
+              <?php the_excerpt('read more'); ?>
+            </article> <!-- /.article-excerpt -->
+          <?php
+          endforeach;
+          wp_reset_postdata();
+          ?>
+      </section>
+
+      <p class="mobile-only align-right"><a href="#page-header">back to top</a></p>
+
+    </div> <!-- /.inner-wrap -->
+
+  </div> <!-- /.content-wrapper -->
+
+  <div id="page-footer" class="inner-wrap">
+    <?php wp_footer(); ?>
+    <p class="align-center">&copy2014 Glenn Hodgkinson</p>
+  </div>
+
+  <script>
+    jQuery(function(){
+      jQuery(window).scroll(function() {
+          if (jQuery(this).scrollTop() > 75) {
+              jQuery(".back-to-top:hidden").css('visibility','visible');
+              jQuery(".back-to-top:hidden").fadeIn('slow');
+          }
+          else {
+              jQuery(".back-to-top:visible").fadeOut("slow");
+          }
+      });
+  });
+  </script>
+
+  <script>
+      jQuery(".menu-trigger").click(function () {
+        jQuery(".mob-menu").slideToggle("fast");
+      });
+  </script>
+
+</body>
+
+</html>
+
+
 

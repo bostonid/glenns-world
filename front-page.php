@@ -23,15 +23,7 @@
       </div>
 
       <nav id="top-nav" class="mob-menu">
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/design">Design</a></li>
-          <li><a href="/develop">Develop</a></li>
-          <li><a href="/educate">Educate</a></li>
-          <li><a href="/speak">Speak</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
+        <?php wp_nav_menu( array( 'theme_location' => 'primarynav-menu' ) ); ?>
       </nav>
     </div> <!-- /.inner-wrap -->
   </header> <!-- /#page-header -->
