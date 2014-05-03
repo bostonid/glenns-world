@@ -29,6 +29,7 @@
           <li><a href="/develop">Develop</a></li>
           <li><a href="/educate">Educate</a></li>
           <li><a href="/speak">Speak</a></li>
+          <li><a href="/blog">Blog</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
