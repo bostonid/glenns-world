@@ -1,5 +1,5 @@
  <?php /*
-Template Name: Left Sidebar
+Template Name: Right Sidebar
 */ ?>
 
 <?php define('WP_USE_THEMES', true); get_header(); ?>
