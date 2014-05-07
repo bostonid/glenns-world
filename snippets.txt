@@ -15,11 +15,18 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: Light, Responsive
 */
 
+img.alignleft {float:left; padding-left:20px;}
+img.alignright {float:right; padding-left:20px;}
+img.aligncenter {display:block; margin:20px auto;}
+
 
 Create index.php file
 ---------------------
 // line 1
+<?php define('WP_USE_THEMES', true); get_header(); ?>
 
+// line 3
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 
 Create header.php file
@@ -144,18 +151,6 @@ Template Name: Blog Landing Page
     <p class="align-center">&copy2014 Glenn Hodgkinson</p>
   </div>
 
-  <script>
-    jQuery(function(){
-      jQuery(window).scroll(function() {
-          if (jQuery(this).scrollTop() > 75) {
-              jQuery(".back-to-top:hidden").css('visibility','visible');
-              jQuery(".back-to-top:hidden").fadeIn('slow');
-          }
-          else {
-              jQuery(".back-to-top:visible").fadeOut("slow");
-          }
-      });
-  });
   </script>
 
   <script>

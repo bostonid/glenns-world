@@ -328,6 +328,10 @@ a.button:hover {
     text-decoration: none;
 }
 
+#blog-pager span {display: block;}
+#blog-pager span.left {float:left;}
+#blog-pager span.right {float:right;}
+
 /* ////////////////////// Start of media queries //////////////////////////// */
 
 @media screen and (min-width: 801px) {

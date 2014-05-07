@@ -15,10 +15,11 @@ Template Name: Blog Landing Page
     </div>
 
     <div class="inner-wrap whitebg shadow pad20">
-      <?php get_search_form(); ?>
 
     <?php
-      if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        query_posts('post_type=post&post_status=publish&posts_per_page=10&paged='.get_query_var('pages'));
+
+        if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
       <article class="article-excerpt cf">
         <h2><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h2>
         <?php the_excerpt('read more'); ?>
