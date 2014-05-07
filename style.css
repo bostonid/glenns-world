@@ -189,6 +189,7 @@ h3, h4 {
     font-size: 2em;
     margin-bottom: 20px;
     line-height: 120%;
+    text-transform: uppercase;
 }
 
 p {
@@ -328,9 +329,28 @@ a.button:hover {
     text-decoration: none;
 }
 
+.alignleft{text-align: left;}
+.alignright{text-align: right;}
+.aligncenter{text-align: center;}
+
+img.alignleft{
+    float: left;
+    margin-right: 20px;
+}
+img.alignright{
+    float: right;
+    margin-left: 20px;}
+img.aligncenter{
+    display: block;
+    margin: 0 auto;
+}
+
 #blog-pager span {display: block;}
 #blog-pager span.left {float:left;}
 #blog-pager span.right {float:right;}
+
+
+
 
 /* ////////////////////// Start of media queries //////////////////////////// */
 
@@ -425,16 +445,22 @@ h1 {font-size: 6em;}
 
 .highlight {background: #65ac0e; color: #ffffff; padding: 0.25em;}
 
+#right-sidebar {
+    padding-left: 40px;
+    border-left: solid 1px #ddd;
+    font-size: 0.75em;
 }
 
+}
 
+/* ////////////////////// Front page hero text break///////////////////////// */
 @media screen and (min-width: 1100px) {
 
 h2.big {font-size: 6em;}
 
 }
 
-/* ////////////////////// Start of media queries //////////////////////////// */
+/* ////////////////////// Top nav break ///////////////////////////////////// */
 
 @media screen and (min-width: 801px) and (max-width: 1140px) {
 

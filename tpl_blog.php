@@ -26,7 +26,10 @@ Template Name: Blog Landing Page
       </article> <!-- /.article-excerpt -->
       <?php endwhile; else: ?>
       <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-      <?php endif; ?>
+      <?php
+        endif;
+        wp_reset_query();
+      ?>
 
       <!-- Pager navigation starts here -->
       <div id="blog-pager">
